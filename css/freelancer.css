@@ -6,6 +6,7 @@
 
 body {
     overflow-x: hidden;
+    color: #18bc9c;
 }
 
 p {
@@ -327,6 +328,10 @@ form .row:first-child .floating-label-form-group {
 
 footer {
     color: #fff;
+     position:absolute;
+   bottom:0;
+   width:100%;
+   background:#6cf;
 }
 
 footer h3 {
@@ -447,4 +452,11 @@ footer .footer-below {
 .portfolio-modal .modal-backdrop {
     display: none;
     opacity: 0;
+}
+
+#wrapper {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+margin: 0 auto -4em;
 }
