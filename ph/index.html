@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <title>Web Observatory</title>
+    <style>
+    	body {
+    		margin:0;
+    		background: #000;
+    		overflow: hidden;
+		}
+		.navbar-custom {
+		    margin-bottom: 0;
+		    border-bottom: 1px solid rgba(white, 0.3);
+		    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+		    background-color: black;
+		}
+		.navbar-header {
+			padding-top: 20px;
+	        width: 100%;
+	    }
+	    .navbar-brand {
+	        position: relative;
+	        margin-left: -195px !important;
+	        left: 50%;
+	        width: 380px;
+	        text-align: center;
+	        text-transform: uppercase;
+	        font-size: 1.8em;
+	        letter-spacing: .2em;
+	        font-weight: 400;
+	    }
+	    a.navbar-brand {
+	        color: white;
+	    }
+	    .light {
+		    font-weight: 300;
+		}
+		.footer {
+		  position: absolute;
+		  bottom: 0;
+		  width: 100%;
+		  /* Set the fixed height of the footer here */
+		  height: 60px;
+		  /*background-color: #000;*/
+		}
+		.container .text-muted {
+		  margin: 20px 0;
+		}
+
+		.footer > .container {
+		  padding-right: 20px;
+		  padding-left: 20px;
+		}
+		.nav a {
+			font-size: 1.8em;
+			color: white;
+		}
+		.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+		    background-color: transparent;
+		    color: #AAA;
+		}
+    </style>
+</head>
+<body>
+	<nav class="navbar navbar-fixed-top navrbar-custom">
+      	<div class="container-fluid">
+	        <div class="navbar-header">
+	        	<a class="navbar-brand page-scroll" href="http://www.webobservatory.org/">
+	        		<span class="light">Web</span> Observatory
+		        </a>
+	        </div>
+    	</div>
+    </nav>
+	<iframe id="video" src="https://www.youtube.com/embed/8wZR9arA4g4?modestbranding=1&autohide=1&showinfo=0&controls=0&rel=0" frameborder="0" allowfullscreen></iframe>
+	<footer class="footer">
+      <div class="container-fluid">
+	        <ul class="nav navbar-nav">	            
+	            <li>
+	                <a href="https://twitter.com/wo_team" data-toggle="tooltip" data-placement="right" title="Follow us on Twitter!"><i class="fa fa-twitter"></i></a>
+	            </li>
+	            <li>
+	                <a href="http://socpub.cloudapp.net/w3o/wo_list.html" data-toggle="tooltip" data-placement="right" title="An index of Web Observatories"><i class="fa fa-sitemap" aria-hidden="true"></i></a>
+	            </li>
+	            <li>
+	                <a href="http://socpub.cloudapp.net/w3o/loc.html" data-toggle="tooltip" data-placement="right" title="Search Datasets and Apps"><i class="fa fa-search" aria-hidden="true"></i></a>
+	            </li>
+	        </ul>
+      </div>
+    </footer>
+	<script>
+		$(function(){
+		  $('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
+
+		  $(window).resize(function(){
+		    $('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
+		  });
+
+		  $('[data-toggle="tooltip"]').tooltip();
+		});
+	</script>
+</body>
+</html>
