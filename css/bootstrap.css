@@ -13,6 +13,7 @@ html {
 }
 body {
   margin: 0;
+  color: #FFFFFF;
 }
 article,
 aside,
@@ -999,10 +1000,13 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  /*font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;*/
   line-height: 1.1;
-  color: inherit;
+  color: #000000;
+   text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
 }
 h1 small,
 h2 small,

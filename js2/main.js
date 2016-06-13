@@ -12,6 +12,7 @@ $(document).ready(function() {
  document.getElementById("searchButton").addEventListener("click", function(){
 
       dta = $("input#itemSearch").val();
+      clearTable();
       if(dta.length > 1){
       	searchData = dta;
 
@@ -21,14 +22,8 @@ $(document).ready(function() {
           from_page: 'loc'
         });
 
-
-
-      // socket.emit('search_data', {
-      //   data:  $("input#itemSearch").val()
-      // });
-        console.log("Sent Data: "+dta);
-        $("input#name").val(null);
-        clearTable();
+        // console.log("Sent Data: "+dta);
+        $("#input#itemSearch").val(null);
       }else{
 
 
@@ -41,37 +36,33 @@ $(document).ready(function() {
     });
 
 
-  socket.on('search_results', function (data) {
-       console.log("Search Data Results For Chart");
-       jsonData = JSON.stringify(data);
-        console.log("TEST:"+jsonData)
-        chartData = jsonData;
+  // socket.on('search_results', function (data) {
+  //      console.log("Search Data Results For Chart");
+  //      jsonData = JSON.stringify(data);
+  //      // console.log("TEST:"+jsonData)
+  //       chartData = jsonData;
 
-   //    	test = jQuery.parseJSON(jsonData);
-   //    	console.log("TEST:"+test)
-   //     json = jQuery.parseJSON(jsonData);
-   //     console.log(json.data[0]);
-   //     jsonData = JSON.stringify(json.data);
-	  // chartData = jQuery.parseJSON(jsonData);
-   //     console.log("chart data: "+chartData);
-        updateChart();
+  //  //    	test = jQuery.parseJSON(jsonData);
+  //  //    	console.log("TEST:"+test)
+  //  //     json = jQuery.parseJSON(jsonData);
+  //  //     console.log(json.data[0]);
+  //  //     jsonData = JSON.stringify(json.data);
+	 //  // chartData = jQuery.parseJSON(jsonData);
+  //  //     console.log("chart data: "+chartData);
+  //      // updateChart();
      
 
-    });
+  //   });
 
 socket.on('search_results_for_web', function (data) {
-       console.log("Search Data Results For Chart");
+       console.log("Search Data Results From Server");
        jsonData = JSON.stringify(data);
         console.log("RESUTLS:"+jsonData)
         paredData = $.parseJSON(jsonData);
 
         dataList = [];
 
-        // items = paredData.results;
-
-        // console.log("ITEMS: "+ );
-
-
+  
         for(var i in paredData){
 
      		   var name = paredData[i]['properties']['http://schema.org/name']
@@ -79,11 +70,11 @@ socket.on('search_results_for_web', function (data) {
 			     var provider = paredData[i]['properties']['http://schema.org/provider']
             var url = paredData[i]['properties']['http://schema.org/url']
 
-			var dataEntry = [name, description, provider, url];
-			dataList.push(dataEntry);
-		}
-		tableData = dataList;
-		updateTable(tableData);
+		      	var dataEntry = [name, description, provider, url];
+			       dataList.push(dataEntry);
+		    }
+		  tableData = dataList;
+		  updateTable(tableData);
 
 		//also send it off again to get the chart
 		//document.getElementById("searchButton").click();
@@ -92,38 +83,7 @@ socket.on('search_results_for_web', function (data) {
     });
 
 
-
-
-function updateChart(){
-	 var chart = new CanvasJS.Chart("chartContainer",
-    {
-      theme: "theme2",
-      title:{
-        text: "Unit Price for "+searchData
-      },
-      animationEnabled: true,
-      // axisX: {
-      //   valueFormatString: "yyyy-MM-dd HH:mm:ss",
-      //   interval:1,
-      //   intervalType: "month"
-        
-      // },
-      axisY:{
-          title:"Unit Price (Pence)",
-        includeZero: false
-
-        
-      },
-      data: $.parseJSON(chartData)
-    });
-
-chart.options.data[0].dataPoints.sort(compareDataPointXAscend);
-
-
-chart.render();
-}
-
-});
+ });
 
 var tableDataAll = [];
 
@@ -135,10 +95,17 @@ $('#example').DataTable( {
         data: tableDataAll,
         destroy: true,
         columns: [
-            { title: "Dataset Name" },
-            { title: "Description" },
-            { title: "Provider" },
-            { title: "Link to Resource" }
+            { title: "Dataset Name",
+                          defaultContent: "" },
+            { title: "Description",
+                          defaultContent: "" },
+
+            { title: "Provider",
+                          defaultContent: "" },
+
+            { title: "Link to Resource",
+                          defaultContent: "" }
+
         ],
         "columnDefs": [ {
          "targets": 3,
@@ -153,16 +120,23 @@ $('#example').DataTable( {
 
 function clearTable(){
 
-tableDataAll = tableDataAll.concat(datas)
+tableDataAll = [];
 
 $('#example').DataTable( {
         data: [],
         destroy: true,
         columns: [
-            { title: "Dataset Name" },
-            { title: "Description" },
-            { title: "Provider" },
-            { title: "Link to Resource" }
+            { title: "Dataset Name",
+                          defaultContent: "" },
+            { title: "Description",
+                          defaultContent: "" },
+
+            { title: "Provider",
+                          defaultContent: "" },
+
+            { title: "Link to Resource",
+                          defaultContent: "" }
+
         ]
     } );
 
